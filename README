@@ -1,0 +1,16 @@
+
+Readme for 'swst' package.
+
+This package is aimed at facilitating the printing of statistical results in Sweave, reducing several lines of code to \Sexpr{swst(object)} where the swst function automatically extracts statistical results, formats it and returns it in proper LaTeX code.
+
+Any help is greatly appreciated and I'll be happy to add you to the authors list if requested if you do so. I am especially looking for more swst methods to extract results. The code should be in the format:
+
+swst.class <- function(x,...)
+{
+  # extract information from x...
+  
+  swp(name statistic, value statistic, p value, degrees of freedom, ...)
+}
+
+Multiple statistical results from one object (e.g. anova) should be returned in a named vector.
+
