@@ -1,0 +1,7 @@
+export(swst)
+export(swstNP)
+S3method(swst,anova)
+S3method(swst,aov)
+S3method(swst,default)
+S3method(swst,htest)
+S3method(swst,lm)

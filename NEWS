@@ -1,0 +1,3 @@
+Changes in 0.0.2:
+	o The package now uses S3 methods
+	0 Documentation now done with roxygen
