@@ -289,6 +289,57 @@ swst.anova <- function(x,...)
     return(res)
   }
 
+
+##' @return \code{NULL}
+##' 
+##' @title swst:LaTeX code for statistical reference
+##' @rdname swst
+##' @method swst Anova.mlm
+##' @S3method swst Anova.mlm
+swst.Anova.mlm <- function(x,...)
+{
+    ### DATA EXTRACTION COPIED FROM car:::Anova.mlm
+    test <- x$test
+    repeated <- x$repeated
+    ntests <- length(x$terms)
+    tests <- matrix(NA, ntests, 4)
+    if (!repeated) 
+        SSPE.qr <- qr(x$SSPE)
+    for (term in 1:ntests) {
+        eigs <- Re(eigen(qr.coef(if (repeated) qr(x$SSPE[[term]]) else SSPE.qr, 
+            x$SSP[[term]]), symmetric = FALSE)$values)
+        tests[term, 1:4] <- switch(test, Pillai = stats:::Pillai(eigs, 
+            x$df[term], x$error.df), Wilks = stats:::Wilks(eigs, 
+            x$df[term], x$error.df), `Hotelling-Lawley` = stats:::HL(eigs, 
+            x$df[term], x$error.df), Roy = stats:::Roy(eigs, 
+            x$df[term], x$error.df))
+    }
+    ok <- tests[, 2] >= 0 & tests[, 3] > 0 & tests[, 4] > 0
+    ok <- !is.na(ok) & ok
+    tests <- cbind(x$df, tests, pf(tests[ok, 2], tests[ok, 3], 
+        tests[ok, 4], lower.tail = FALSE))
+    rownames(tests) <- x$terms
+    colnames(tests) <- c("Df", "test stat", "approx F", "num Df", 
+        "den Df", "Pr(>F)")
+    tests <- structure(as.data.frame(tests), heading = paste("\nType ", 
+        x$type, if (repeated) 
+            " Repeated Measures", " MANOVA Tests: ", test, " test statistic", 
+        sep = ""), class = c("anova", "data.frame"))
+    ### END CODE COPIED FROM car:::Anova.mlm
+    
+    n <- nrow(tests) - 1
+    res <- character(n)
+    names(res) <- rownames(tests)[-1]
+    for (i in 1:n)
+    {
+      res[i] <- swp("F",tests[['approx F']][i+1], tests[['Pr(>F)']][i+1], c(tests[['num Df']][i+1],tests[['den Df']][i+1]), ...)
+    }
+    return(res)
+}
+
+
+
+
 ##' @return \code{NULL}
 ##' 
 ##' @title swst:LaTeX code for statistical reference

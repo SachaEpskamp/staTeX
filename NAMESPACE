@@ -1,6 +1,8 @@
+export(swp)
 export(swst)
 export(swstNP)
 S3method(swst,anova)
+S3method(swst,Anova.mlm)
 S3method(swst,aov)
 S3method(swst,default)
 S3method(swst,htest)

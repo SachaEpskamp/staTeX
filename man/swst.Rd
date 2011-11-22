@@ -1,6 +1,7 @@
 \name{swst}
 \alias{swst}
 \alias{swst.anova}
+\alias{swst.Anova.mlm}
 \alias{swst.aov}
 \alias{swst.default}
 \alias{swst.htest}
@@ -41,6 +42,8 @@ freedom and p-value from that object I will include you in the author list.}
 
   \method{swst}{anova} (x, ...)
 
+  \method{swst}{Anova.mlm} (x, ...)
+
   \method{swst}{default} (x, ...)
 }
 \arguments{
@@ -53,6 +56,8 @@ freedom and p-value from that object I will include you in the author list.}
 \value{
   A strings containing LaTeX code, or a named vector of
   strings containing LaTeX code
+
+  \code{NULL}
 
   \code{NULL}
 
@@ -96,6 +101,8 @@ freedom and p-value from that object I will include you in the author list.}
   me a small piece of code that extracts the statistic,
   degrees of freedom and p-value from that object I will
   include you in the author list.
+
+  swst:LaTeX code for statistical reference
 
   swst:LaTeX code for statistical reference
 
