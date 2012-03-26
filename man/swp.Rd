@@ -3,7 +3,7 @@
 \title{Return statistic and p values in LaTeX format}
 \usage{
   swp(statistic, value, pval, df = NULL, digits = 3,
-    sig = FALSE, alpha = c(0.05, 0.01, 0.001),
+    sig = FALSE, alpha = c(0.05, 0.01, 0.001), output = c("Sweave", "knitr"),
     parantheses = TRUE)
 }
 \arguments{
@@ -26,6 +26,8 @@
 
   \item{alpha}{A vector specifying the significance levels
   used by 'sig'}
+  
+  \item{output}{Character indicating the output. Can be "Sweave", "knitr" or "plain". Currently the only thing this does is remove "$" signs from output if this is "plain"}
 
   \item{parantheses}{Logical, should parantheses be
   printed?}
@@ -35,7 +37,7 @@
   generate the LaTeX code.
 }
 \author{
-  Sacha Epskamp
+  Sacha Epskamp (mail@sachaepskamp.com)
 }
 \seealso{
   \code{\link{swst}} \code{\link{swstNP}}

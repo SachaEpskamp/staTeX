@@ -1,7 +1,7 @@
 Package: swst
 Type: Package
 Title: Print statistical results in Sweave
-Version: 0.0.2
+Version: 0.0.3
 Date: 2011-11-19
 Author: Sacha Epskamp
 Maintainer: Sacha Epskamp <sacha.epskamp@gmail.com>

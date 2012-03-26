@@ -6,31 +6,8 @@
 \alias{swst.default}
 \alias{swst.htest}
 \alias{swst.lm}
-\title{swst:LaTeX code for statistical reference
+\title{swst:LaTeX code for statistical reference}
 
-This function attempts to extract information on statistic, degrees of
-freedom and p-value from a given object, and returns a LaTeX code.
-
-This function attemps to extract information needed to make a LaTeX code of
-the statistic in the following format (for an F value):
-
-(F(df1,df2)=..., p=...)
-
-Some arguments can be passed to \code{\link{swp}} to modify the way the
-statistic is printed. For example, 'digits' an be used to change the amount
-of digits printed and 'sig' can be used to change the way to show only
-significance cutoff scores. For example, with p=0.02 this would return:
-(F(df1,df2)=..., p<0.05)
-
-This is aimed to facilitate the use of Sweave especially for users new to R.
-This is currently in development and is so far only a few commonly used
-statistics are implemented, but this should change in future versions.
-
-If you have any ideas on other ways to facilitate using Sweave (except of
-course existing methods such as xtable) please contact me. Also, if you know
-of an object that is not implemented please contact me as well. If you
-supply me a small piece of code that extracts the statistic, degrees of
-freedom and p-value from that object I will include you in the author list.}
 \usage{
   swst(x, ...)
 
@@ -56,18 +33,6 @@ freedom and p-value from that object I will include you in the author list.}
 \value{
   A strings containing LaTeX code, or a named vector of
   strings containing LaTeX code
-
-  \code{NULL}
-
-  \code{NULL}
-
-  \code{NULL}
-
-  \code{NULL}
-
-  \code{NULL}
-
-  \code{NULL}
 }
 \description{
   swst:LaTeX code for statistical reference
@@ -97,22 +62,7 @@ freedom and p-value from that object I will include you in the author list.}
   If you have any ideas on other ways to facilitate using
   Sweave (except of course existing methods such as xtable)
   please contact me. Also, if you know of an object that is
-  not implemented please contact me as well. If you supply
-  me a small piece of code that extracts the statistic,
-  degrees of freedom and p-value from that object I will
-  include you in the author list.
-
-  swst:LaTeX code for statistical reference
-
-  swst:LaTeX code for statistical reference
-
-  swst:LaTeX code for statistical reference
-
-  swst:LaTeX code for statistical reference
-
-  swst:LaTeX code for statistical reference
-
-  swst:LaTeX code for statistical reference
+  not implemented please contact me as well. 
 }
 \examples{
 ### Using examples from documentation of the used functions
@@ -178,7 +128,7 @@ swst(npk.aov)
 }
 }
 \author{
-  Sacha Epskamp (sacha.epskamp@gmail.com)
+  Sacha Epskamp (mail@sachaepskamp.com)
 }
 \seealso{
   \code{\link{swp}} \code{\link{swstNP}}
