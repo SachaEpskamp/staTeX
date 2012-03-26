@@ -4,7 +4,7 @@ Title: Print statistical results in Sweave
 Version: 0.0.3
 Date: 2012-03-27
 Author: Sacha Epskamp
-Maintainer: Sacha Epskamp <sacha.epskamp@gmail.com>
+Maintainer: Sacha Epskamp <mail@sachaepskamp.com>
 Depends:
     R (>= 2.14.0)
 Description: This package can be used to extract and print statistical results
