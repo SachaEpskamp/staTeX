@@ -165,6 +165,7 @@ lm.D90 <- lm(weight ~ group - 1) # omitting intercept
 swst(lm.D9)
 swst(lm.D90)
 
+\dontrun{
 # ANOVA:
 ## From Venables and Ripley (2002) p.165.
 utils::data(npk, package="MASS")
@@ -174,6 +175,7 @@ op <- options(contrasts=c("contr.helmert", "contr.poly"))
 npk.aov <- aov(yield ~ block + N*P*K, npk)
 
 swst(npk.aov)
+}
 }
 \author{
   Sacha Epskamp (sacha.epskamp@gmail.com)
