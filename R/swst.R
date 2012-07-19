@@ -24,6 +24,32 @@ swst.htest <- function(x,...)
      return(swp("\\\\chi^2",stat,pval,df,...))
    }
 
+### cor.test() ###
+   if (any(grepl("correlation",x$method)))
+   {
+     # Extract Statistics:
+     stat <- x$statistic
+     para <- x$parameter
+     pval <- x$p.value
+     estimate <- x$estimate
+     method <- x$method
+     if (any(grepl("Pearson", x$method)))
+     {
+       confidint <- x$conf.int
+       res <- swp("cor",estimate,pval,c(stat, para),...)
+     } else if (any(grepl("Spearman", x$method)))
+     {
+       res <- swp("rho",estimate,pval,para,...)
+     } else if (any(grepl("Kendall", x$method)))
+     {
+       res <- swp("tau",estimate,pval,para,...)
+     } else
+     {
+       res <- swp("cor",estimate,pval,para,...)
+     }
+
+     return(res)
+   }
 
 # If all else fails:
      stat <- x$statistic
