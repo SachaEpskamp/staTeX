@@ -1,42 +1,40 @@
-\name{swst}
-\alias{swst}
-\alias{swst.anova}
-\alias{swst.Anova.mlm}
-\alias{swst.aov}
-\alias{swst.default}
-\alias{swst.htest}
-\alias{swst.lm}
-\title{swst:LaTeX code for statistical reference}
+\name{st}
+\alias{st}
+\alias{st.anova}
+\alias{st.Anova.mlm}
+\alias{st.aov}
+\alias{st.default}
+\alias{st.htest}
+\alias{st.lm}
+\title{st:LaTeX code for statistical reference}
 
 \usage{
-  swst(x, ...)
+  st(x, ...)
 
-  \method{swst}{htest} (x, ...)
+  \method{st}{htest} (x, ...)
 
-  \method{swst}{aov} (x, ...)
+  \method{st}{aov} (x, ...)
 
-  \method{swst}{lm} (x, ...)
+  \method{st}{lm} (x, ...)
 
-  \method{swst}{anova} (x, ...)
+  \method{st}{anova} (x, ...)
 
-  \method{swst}{Anova.mlm} (x, ...)
+  \method{st}{Anova.mlm} (x, ...)
 
-  \method{swst}{default} (x, ...)
+  \method{st}{default} (x, ...)
 }
 \arguments{
   \item{x}{An input object. Currently supported are a
   numerical vector and objects of classes "htest"
   (depending on statistic), "lm", "aov" and "anova".}
 
-  \item{\dots}{Arguments sent to \code{\link{swp}}}
+  \item{\dots}{Arguments sent to \code{\link{staTeX}}}
 }
 \value{
   A strings containing LaTeX code, or a named vector of
   strings containing LaTeX code
 }
 \description{
-  swst:LaTeX code for statistical reference
-
   This function attempts to extract information on
   statistic, degrees of freedom and p-value from a given
   object, and returns a LaTeX code.
@@ -47,7 +45,7 @@
 
   (F(df1,df2)=..., p=...)
 
-  Some arguments can be passed to \code{\link{swp}} to
+  Some arguments can be passed to \code{\link{staTeX}} to
   modify the way the statistic is printed. For example,
   'digits' an be used to change the amount of digits
   printed and 'sig' can be used to change the way to show
@@ -70,13 +68,13 @@
 require(graphics)
 tTest <- t.test(1:10,y=c(7:20))
 
-swst(tTest)
+st(tTest)
 
 # Significance:
-swst(tTest,sig=TRUE)
+st(tTest,sig=TRUE)
 
 tTest <- t.test(1:10,y=1:10)
-swst(tTest,sig=TRUE)
+st(tTest,sig=TRUE)
 
 # Correlation test:
 ## Hollander & Wolfe (1973), p. 187f.
@@ -92,7 +90,7 @@ y <- c( 2.6,  3.1,  2.5,  5.0,  3.6,  4.0,  5.2,  2.8,  3.8)
 ##  Hunter L value is positively associated with the panel score.
 corTest <- cor.test(x, y, method = "kendall", alternative = "greater")
 
-swst(corTest)
+st(corTest)
 
 # Chi-square test:
 M <- as.table(rbind(c(762, 327, 468), c(484,239,477)))
@@ -100,7 +98,7 @@ dimnames(M) <- list(gender=c("M","F"),
                     party=c("Democrat","Independent", "Republican"))
 chisqTest <- chisq.test(M)
 
-swst(chisqTest)
+st(chisqTest)
 
 # Linear model:
 ## Annette Dobson (1990) "An Introduction to Generalized Linear Models".
@@ -112,8 +110,8 @@ weight <- c(ctl, trt)
 lm.D9 <- lm(weight ~ group)
 lm.D90 <- lm(weight ~ group - 1) # omitting intercept
 
-swst(lm.D9)
-swst(lm.D90)
+st(lm.D9)
+st(lm.D90)
 
 \dontrun{
 # ANOVA:
@@ -124,13 +122,13 @@ utils::data(npk, package="MASS")
 op <- options(contrasts=c("contr.helmert", "contr.poly"))
 npk.aov <- aov(yield ~ block + N*P*K, npk)
 
-swst(npk.aov)
+st(npk.aov)
 }
 }
 \author{
   Sacha Epskamp (mail@sachaepskamp.com)
 }
 \seealso{
-  \code{\link{swp}} \code{\link{swstNP}}
+  \code{\link{staTeX}} \code{\link{stNP}}
 }
 

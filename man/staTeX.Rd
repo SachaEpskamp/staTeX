@@ -1,8 +1,8 @@
-\name{swp}
-\alias{swp}
+\name{staTeX}
+\alias{staTeX}
 \title{Return statistic and p values in LaTeX format}
 \usage{
-  swp(statistic, value, pval, df = NULL, digits = 3,
+  staTeX(statistic, value, pval, df = NULL, digits = 3,
     sig = FALSE, alpha = c(0.05, 0.01, 0.001), output = c("Sweave", "knitr"),
     parantheses = TRUE)
 }
@@ -33,13 +33,13 @@
   printed?}
 }
 \description{
-  This is the function used by \code{\link{swst}} to
+  This is the function used by \code{\link{st}} to
   generate the LaTeX code.
 }
 \author{
-  Sacha Epskamp (mail@sachaepskamp.com)
+  Sacha Epskamp <mail@sachaepskamp.com>
 }
 \seealso{
-  \code{\link{swst}} \code{\link{swstNP}}
+  \code{\link{st}} \code{\link{stNP}}
 }
 

@@ -1,16 +1,16 @@
 ## No paranthesis version:
-swstNP <- function(x,...)
+stNP <- function(x,...)
 {
-  swst(x,parantheses=FALSE)
+  st(x,parantheses=FALSE)
 }
 
 ## Generic method:
-swst <- function (x, ...) {
-   UseMethod("swst", x)
+st <- function (x, ...) {
+   UseMethod("st", x)
 }
 
 ## 'htest' method:
-swst.htest <- function(x,...)
+st.htest <- function(x,...)
 {
 
 ### chisq.test() ###
@@ -21,7 +21,7 @@ swst.htest <- function(x,...)
      df <- x$parameter['df']
      pval <- x$p.value
 
-     return(swp("\\\\chi^2",stat,pval,df,...))
+     return(staTeX("\\\\chi^2",stat,pval,df,...))
    }
 
 ### cor.test() ###
@@ -36,16 +36,16 @@ swst.htest <- function(x,...)
      if (any(grepl("Pearson", x$method)))
      {
        confidint <- x$conf.int
-       res <- swp("cor",estimate,pval,c(stat, para),...)
+       res <- staTeX("cor",estimate,pval,c(stat, para),...)
      } else if (any(grepl("Spearman", x$method)))
      {
-       res <- swp("rho",estimate,pval,para,...)
+       res <- staTeX("rho",estimate,pval,para,...)
      } else if (any(grepl("Kendall", x$method)))
      {
-       res <- swp("tau",estimate,pval,para,...)
+       res <- staTeX("tau",estimate,pval,para,...)
      } else
      {
-       res <- swp("cor",estimate,pval,para,...)
+       res <- staTeX("cor",estimate,pval,para,...)
      }
 
      return(res)
@@ -56,17 +56,17 @@ swst.htest <- function(x,...)
      df <- x$parameter
      pval <- x$p.value
 
-     return(swp(names(x$statistic),stat,pval,df,...))
+     return(staTeX(names(x$statistic),stat,pval,df,...))
  }
 
 ## 'aov' method:
-swst.aov <- function(x,...)
+st.aov <- function(x,...)
 {
-   return(swst(anova(x),...))
+   return(st(anova(x),...))
 }
 
 ## 'lm' method:
-swst.lm <- function(x,...)
+st.lm <- function(x,...)
 {
     sum <- summary(x)
     stat <- sum$fstatistic['value']
@@ -74,11 +74,11 @@ swst.lm <- function(x,...)
     df2 <- sum$fstatistic['dendf']
     pval <- pf(stat,df1,df2,lower.tail=FALSE)
 
-    return(swp("F",stat,pval,c(df1,df2),...))
+    return(staTeX("F",stat,pval,c(df1,df2),...))
  }
 
 ## 'anova' method:
-swst.anova <- function(x,...)
+st.anova <- function(x,...)
 {
     n <- nrow(x)-1
     res <- character(n)
@@ -87,10 +87,10 @@ swst.anova <- function(x,...)
     {
       if ("num Df"%in%names(x) & "den Df"%in%names(x))
       {
-        res[i] <- swp("F",x[i,grepl('approx F|F value',names(x))],x[i,'Pr(>F)'],c(x[i,'num Df'],x[i,'den Df']),...)
+        res[i] <- staTeX("F",x[i,grepl('approx F|F value',names(x))],x[i,'Pr(>F)'],c(x[i,'num Df'],x[i,'den Df']),...)
       } else
       {
-        res[i] <- swp("F",x[i,grepl('approx F|F value',names(x))],x[i,'Pr(>F)'],c(x[i,'Df'],x[n+1,'Df']),...)
+        res[i] <- staTeX("F",x[i,grepl('approx F|F value',names(x))],x[i,'Pr(>F)'],c(x[i,'Df'],x[n+1,'Df']),...)
       }
     }
     return(res)
@@ -98,7 +98,7 @@ swst.anova <- function(x,...)
 
 
 ## 'Anova.mlm' method:
-swst.Anova.mlm <- function(x,...)
+st.Anova.mlm <- function(x,...)
 {
     ### DATA EXTRACTION COPIED FROM car:::Anova.mlm
     test <- x$test
@@ -134,7 +134,7 @@ swst.Anova.mlm <- function(x,...)
     names(res) <- rownames(tests)[-1]
     for (i in 1:n)
     {
-      res[i] <- swp("F",tests[['approx F']][i+1], tests[['Pr(>F)']][i+1], c(tests[['num Df']][i+1],tests[['den Df']][i+1]), ...)
+      res[i] <- staTeX("F",tests[['approx F']][i+1], tests[['Pr(>F)']][i+1], c(tests[['num Df']][i+1],tests[['den Df']][i+1]), ...)
     }
     return(res)
 }
@@ -142,4 +142,4 @@ swst.Anova.mlm <- function(x,...)
 
 
 ## Default method (simply an error)
-swst.default <- function(x,...) stop("The class of your object is not yet supported by swst.\n\nPlease contact me (sacha.epskamp@gmail.com) with information on your object.")
+st.default <- function(x,...) stop("The class of your object is not yet supported by st.\n\nPlease contact me (sacha.epskamp@gmail.com) with information on your object.")

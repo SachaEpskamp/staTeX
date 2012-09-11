@@ -21,7 +21,7 @@ Number of digits to be displayed
 }
 
 \author{
-Sacha Epskamp (mail@sachaepskamp.com)
+Sacha Epskamp <mail@sachaepskamp.com>
 }
 
 \examples{

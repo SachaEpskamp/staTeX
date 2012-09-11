@@ -1,3 +1,8 @@
+Changes in 0.1:
+	o Package renamed to 'staTeX'
+	o 'swst' method renamed to 'st'
+	o 'swp' function renamed to 'staTeX'
+
 Changes in 0.0.2:
 	o The package now uses S3 methods
 	o Documentation now done with roxygen

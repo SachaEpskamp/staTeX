@@ -1,5 +1,5 @@
 
-swp <- function(statistic,value,pval,df=NULL,digits=3,sig=FALSE,alpha=c(0.05,0.01,0.001),output=c("Sweave","knitr"),parantheses=TRUE)
+staTeX <- function(statistic,value,pval,df=NULL,digits=3,sig=FALSE,alpha=c(0.05,0.01,0.001),output=c("Sweave","knitr"),parantheses=TRUE)
 {
   po <- ifelse(parantheses,"(","")
   pc <- ifelse(parantheses,")","")  

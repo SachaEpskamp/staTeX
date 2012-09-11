@@ -1,12 +1,12 @@
-Package: swst
+Package: staTeX
 Type: Package
 Title: Print statistical results in Sweave
-Version: 0.0.3
+Version: 0.1.0
 Date: 2012-03-27
 Author: Sacha Epskamp
 Maintainer: Sacha Epskamp <mail@sachaepskamp.com>
 Depends:
-    R (>= 2.14.0)
+    R (>= 2.15.0)
 Description: This package can be used to extract and print statistical results
     in a TeX format for easy inclusion in Sweave.
 License: GPL-2
