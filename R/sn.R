@@ -1,5 +1,3 @@
-
-
 sn <- function(x,digits)
 {
   if (x==0) return("0")
